@@ -17,12 +17,21 @@ type InitsController struct {
 // @Failure 403 bad request
 // @router /web [get]
 func (i *InitsController) WebBaseConfig() {
+
 	set, err := models.GetItemByName("web_config")
 	if err != nil {
-		i.Data["json"] = err.Error()
+		i.Data["jsonp"] = map[string]interface{}{
+			"retCode": 50000,
+			"retMsg": "服务器内部错误",
+			"retData": "",
+			"subData": err.Error()}
 	} else {
-		i.Data["json"] = set
+		i.Data["jsonp"] = map[string]interface{}{
+			"retCode": 20000,
+			"retMsg": "请求成功",
+			"retData": set,
+			"subData": ""}
 	}
 
-	i.ServeJSON()
+	i.ServeJSONP()
 }
