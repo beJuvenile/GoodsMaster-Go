@@ -20,18 +20,18 @@ func (i *InitsController) WebBaseConfig() {
 
 	set, err := models.GetItemByName("web_config")
 	if err != nil {
-		i.Data["jsonp"] = map[string]interface{}{
+		i.Data["json"] = map[string]interface{}{
 			"retCode": 50000,
 			"retMsg": "服务器内部错误",
 			"retData": "",
 			"subData": err.Error()}
 	} else {
-		i.Data["jsonp"] = map[string]interface{}{
+		i.Data["json"] = map[string]interface{}{
 			"retCode": 20000,
 			"retMsg": "请求成功",
 			"retData": set,
 			"subData": ""}
 	}
 
-	i.ServeJSONP()
+	i.ServeJSON()
 }
