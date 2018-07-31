@@ -18,7 +18,7 @@ type InitsController struct {
 // @router /web [get]
 func (i *InitsController) WebBaseConfig() {
 
-	set, err := models.GetItemByName("web_config")
+	set, err := models.GetSettingByName("web_config")
 	if err != nil {
 		i.Data["json"] = map[string]interface{}{
 			"retCode": 50000,

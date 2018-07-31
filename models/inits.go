@@ -11,7 +11,7 @@ type Settings struct {
 	Value 	interface{} 	`bson:"value"`
 }
 
-func GetItemByName(name string) (s *Settings, err error) {
+func GetSettingByName(name string) (s *Settings, err error) {
 	if con == nil {
 		return nil, errors.New(errMsg["db_connect_failure"])
 	}
