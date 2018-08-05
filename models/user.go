@@ -1,9 +1,6 @@
 package models
 
 import (
-	//"strconv"
-	//"time"
-
 	"gopkg.in/mgo.v2/bson"
 	"errors"
 )
@@ -13,6 +10,7 @@ type User struct {
 	Nickname string `bson:"nickname"`
 	Account string `bson:"account"`
 	Password string `bson:"password"`
+	PasswordSalt int `bson:"password_salt"`
 	Phone string `bson:"phone"`
 	CreatedAt bson.MongoTimestamp `bson:"create_at"`
 	UpdatedAt bson.MongoTimestamp `bson:"updated_at"`
